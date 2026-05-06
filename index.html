@@ -1,8 +1,244 @@
-<html>
+<!DOCTYPE html>
+<html lang="ko">
 <head>
-진짜로
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>(주) 비에이텍 | 깨끗한 물을 만드는 기술</title>
+    <meta name="description" content="워터 펌프 전문 제작, 설치, 수리 기업. (주) 비에이텍과 함께 깨끗하고 안전한 수처리 시스템을 구축하세요.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Home Specific Styles */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 86, 179, 0.7), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--bg-white);
+            padding-top: var(--header-height);
+        }
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .service-card {
+            background: var(--bg-white);
+            padding: 40px 30px;
+            border-radius: 8px;
+            box-shadow: var(--shadow-md);
+            text-align: center;
+            transition: var(--transition-normal);
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+            border-bottom: 4px solid var(--primary-color);
+        }
+        .service-icon {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+        .service-card h3 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .trust-section {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+        }
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+        .trust-item h2 {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+
+        /* Mobile Menu */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 300px;
+            height: 100vh;
+            background-color: white;
+            z-index: 1001;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            transition: var(--transition-normal);
+            padding: 80px 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .mobile-nav.active {
+            right: 0;
+        }
+        .mobile-nav a {
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+        .close-menu {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--primary-color);
+        }
+        .overlay {
+            position: fixed;
+            top:0; left:0; width:100%; height:100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            display: none;
+        }
+        .overlay.active { display: block; }
+    </style>
 </head>
 <body>
-집에 가고싶어
+
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-water"></i> 비에이텍
+            </a>
+            <nav class="nav-links">
+                <a href="index.html" class="active">홈</a>
+                <a href="about.html">회사소개</a>
+                <a href="equipment.html">장비 및 시설</a>
+                <a href="contact.html">문의 및 오시는 길</a>
+            </nav>
+            <div class="hamburger">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Nav -->
+    <div class="overlay"></div>
+    <div class="mobile-nav">
+        <i class="fa-solid fa-xmark close-menu"></i>
+        <a href="index.html" class="active">홈</a>
+        <a href="about.html">회사소개</a>
+        <a href="equipment.html">장비 및 시설</a>
+        <a href="contact.html">문의 및 오시는 길</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero fade-up">
+        <div class="container hero-content">
+            <h1>깨끗한 물을 만드는 기술, 비에이텍</h1>
+            <p>최고의 워터 펌프 기술력으로 안정적이고 효율적인 수처리 솔루션을 제공합니다.</p>
+            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                <a href="contact.html" class="btn btn-primary" style="font-size: 1.2rem; padding: 15px 40px;">빠른 문의하기</a>
+                <a href="about.html" class="btn btn-outline" style="font-size: 1.2rem; padding: 15px 40px; color: white; border-color: white;">회사 소개서 보기</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="container fade-up">
+        <h2 class="section-title">우리의 서비스</h2>
+        <p class="section-subtitle">다년간의 경험과 노하우를 바탕으로 최적의 펌프 설비 서비스를 약속합니다.</p>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fa-solid fa-gears service-icon"></i>
+                <h3>펌프 맞춤 제작</h3>
+                <p>산업용, 농업용, 생활용 등 고객의 요구사항과 환경에 꼭 맞는 고효율 펌프를 직접 설계 및 제작합니다.</p>
+            </div>
+            <div class="service-card">
+                <i class="fa-solid fa-screwdriver-wrench service-icon"></i>
+                <h3>전문 설치 시공</h3>
+                <p>현장 상황을 철저히 분석하여 안전하고 완벽한 설치를 보장합니다. 철저한 테스트 후 가동을 시작합니다.</p>
+            </div>
+            <div class="service-card">
+                <i class="fa-solid fa-stethoscope service-icon"></i>
+                <h3>유지보수 및 수리</h3>
+                <p>긴급 출동 서비스 및 정기 점검을 통해 설비의 수명을 연장하고 다운타임을 최소화합니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Section -->
+    <section class="trust-section fade-up">
+        <div class="container">
+            <div class="trust-grid">
+                <div class="trust-item">
+                    <h2 class="counter" data-target="20">0</h2>
+                    <p>년 이상의 업력</p>
+                </div>
+                <div class="trust-item">
+                    <h2 class="counter" data-target="1500">0</h2>
+                    <p>+ 누적 프로젝트</p>
+                </div>
+                <div class="trust-item">
+                    <h2 class="counter" data-target="300">0</h2>
+                    <p>+ 파트너사</p>
+                </div>
+                <div class="trust-item">
+                    <h2>100%</h2>
+                    <p>고객 만족도</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <a href="index.html" class="logo" style="color: white; margin-bottom: 20px;">
+                        <i class="fa-solid fa-water"></i> 비에이텍
+                    </a>
+                    <p>깨끗한 물을 만드는 기술력,<br>신뢰할 수 있는 펌프 전문 기업입니다.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <p><i class="fa-solid fa-location-dot"></i> 서울특별시 강남구 테헤란로 123, 4층</p>
+                    <p><i class="fa-solid fa-phone"></i> 02-1234-5678</p>
+                    <p><i class="fa-solid fa-envelope"></i> info@batech.co.kr</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <p><a href="about.html">회사소개</a></p>
+                    <p><a href="equipment.html">장비안내</a></p>
+                    <p><a href="contact.html">오시는 길</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 (주) 비에이텍. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
 </body>
 </html>
