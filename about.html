@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회사소개 | 비에이텍(주)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .page-header {
+            background: linear-gradient(rgba(0, 86, 179, 0.8), rgba(0, 61, 130, 0.8)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            padding: 150px 0 80px;
+            text-align: center;
+            color: white;
+            margin-bottom: 60px;
+        }
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        /* Overview Section */
+        .overview-content {
+            display: flex;
+            gap: 60px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .overview-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        .overview-image {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+        .overview-image img {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: var(--shadow-lg);
+            display: block;
+        }
+        .overview-image::before {
+            content: '';
+            position: absolute;
+            width: 100%; height: 100%;
+            border: 3px solid var(--primary-color);
+            top: 20px; left: -20px;
+            border-radius: 16px;
+            z-index: -1;
+        }
+
+        /* Core Values */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        .value-card {
+            background: var(--bg-white);
+            padding: 40px 30px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+            border-top: 5px solid var(--primary-color);
+            transition: var(--transition-normal);
+        }
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* History Timeline */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+        .timeline::after {
+            content: ''; position: absolute; width: 4px;
+            background-color: var(--border-color);
+            top: 0; bottom: 0; left: 50%; margin-left: -2px;
+        }
+        .timeline-item {
+            padding: 10px 40px; position: relative; width: 50%;
+        }
+        .timeline-item::after {
+            content: ''; position: absolute; width: 20px; height: 20px;
+            right: -10px; background-color: var(--bg-white);
+            border: 4px solid var(--primary-color);
+            top: 15px; border-radius: 50%; z-index: 1;
+        }
+        .left { left: 0; }
+        .right { left: 50%; }
+        .right::after { left: -10px; }
+        .timeline-content {
+            padding: 25px; background-color: var(--bg-white);
+            position: relative; border-radius: 10px; box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+        }
+        .timeline-content h3 { color: var(--primary-color); font-size: 1.5rem; margin-bottom: 10px; font-weight: 700; }
+
+        /* Organization Chart */
+        .org-section {
+            background-color: var(--bg-light);
+            padding: 80px 0;
+            overflow-x: auto;
+        }
+        .org-chart-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 900px; /* Ensure chart doesn't squish too much on mobile */
+            margin-top: 30px;
+        }
+        .org-ceo {
+            background: var(--primary-dark);
+            color: white;
+            padding: 20px 50px;
+            border-radius: 8px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            margin-bottom: 50px;
+            border: 2px solid var(--primary-color);
+        }
+        .org-ceo::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 50px;
+            background: var(--primary-color);
+            bottom: -52px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .org-departments {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            position: relative;
+        }
+        .org-departments::before {
+            content: '';
+            position: absolute;
+            height: 2px;
+            background: var(--primary-color);
+            top: 0;
+            left: 17%;
+            right: 17%;
+        }
+        .org-dept {
+            width: 280px;
+            background: var(--bg-white);
+            border: 2px solid var(--primary-color);
+            border-radius: 8px;
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            margin-top: 30px;
+        }
+        .org-dept::before {
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 30px;
+            background: var(--primary-color);
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .org-dept-header {
+            background: var(--point-color);
+            padding: 15px;
+            text-align: center;
+            border-bottom: 2px solid var(--primary-color);
+            border-radius: 6px 6px 0 0;
+        }
+        .org-dept-header h3 {
+            color: var(--primary-dark);
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+        .org-dept-header p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        .org-members {
+            padding: 15px;
+        }
+        .org-member {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 5px;
+            border-bottom: 1px dashed var(--border-color);
+            font-size: 1.05rem;
+        }
+        .org-member:last-child { border-bottom: none; }
+        .org-member-role { font-weight: 600; color: var(--text-main); }
+        .org-member-name { color: var(--text-muted); }
+
+        /* Mobile Menu */
+        .mobile-nav {
+            position: fixed; top: 0; right: -100%; width: 300px; height: 100vh;
+            background-color: var(--bg-white); z-index: 1001;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1); transition: var(--transition-normal);
+            padding: 80px 30px; display: flex; flex-direction: column; gap: 20px;
+        }
+        .mobile-nav.active { right: 0; }
+        .mobile-nav a { font-size: 1.2rem; font-weight: 600; border-bottom: 1px solid var(--border-color); padding-bottom: 15px; color: var(--text-main); }
+        .close-menu { position: absolute; top: 25px; right: 25px; font-size: 2rem; cursor: pointer; color: var(--primary-color); }
+        .overlay { position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.5); z-index: 1000; display: none; backdrop-filter: blur(2px); }
+        .overlay.active { display: block; }
+
+        @media screen and (max-width: 600px) {
+            .timeline::after { left: 31px; }
+            .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; }
+            .left::after, .right::after { left: 21px; }
+            .right { left: 0%; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-water"></i> 비에이텍(주)
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">홈</a>
+                <a href="about.html" class="active">회사소개</a>
+                <a href="equipment.html">장비 및 기술</a>
+                <a href="contact.html">오시는 길 / 연락처</a>
+            </nav>
+            <div class="hamburger"><i class="fa-solid fa-bars"></i></div>
+        </div>
+    </header>
+
+    <div class="overlay"></div>
+    <div class="mobile-nav">
+        <i class="fa-solid fa-xmark close-menu"></i>
+        <a href="index.html">홈</a>
+        <a href="about.html" class="active">회사소개</a>
+        <a href="equipment.html">장비 및 기술</a>
+        <a href="contact.html">오시는 길 / 연락처</a>
+    </div>
+
+    <div class="page-header fade-up">
+        <div class="container">
+            <h1>회사소개</h1>
+            <p>신뢰와 기술을 바탕으로 수처리 산업을 선도합니다.</p>
+        </div>
+    </div>
+
+    <!-- Overview Section -->
+    <section class="container fade-up" style="padding-bottom: 60px;">
+        <div class="overview-content">
+            <div class="overview-text">
+                <h2 style="color: var(--primary-color); font-size: 2.2rem; margin-bottom: 25px; font-weight: 700;">깨끗한 물을 만드는 사람들,<br>비에이텍(주)입니다.</h2>
+                <p style="margin-bottom: 15px; font-size: 1.1rem;">비에이텍(주)은 2010년 설립 이래 수처리 펌프 분야에서 지속적인 연구 개발과 철저한 품질 관리를 통해 고객에게 최고의 솔루션을 제공해 왔습니다.</p>
+                <p style="margin-bottom: 15px; font-size: 1.1rem;">최신 설비와 숙련된 전문 인력을 바탕으로 맞춤형 펌프 제작부터 완벽한 시공, 그리고 사후 관리까지 책임지는 원스톱 서비스를 실현합니다.</p>
+                <p style="font-size: 1.1rem;">우리의 목표는 단순한 기계 제작이 아닌, 생명의 근원인 물을 안전하게 관리하고 환경을 지키는 가치 있는 기술을 제공하는 것입니다.</p>
+            </div>
+            <div class="overview-image">
+                <img src="https://images.unsplash.com/photo-1541888052163-909772e3cb98?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="비에이텍 작업 현장">
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Values -->
+    <section class="fade-up" style="background-color: var(--bg-light);">
+        <div class="container">
+            <h2 class="section-title">비전 및 핵심 가치</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <i class="fa-solid fa-shield-halved" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 20px;"></i>
+                    <h3>신뢰성 (Trust)</h3>
+                    <p style="margin-top: 10px; color: var(--text-muted);">고객과의 약속을 최우선으로 하며, 엄격한 품질 관리를 통해 고장 없는 견고한 제품을 제공합니다.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fa-solid fa-microchip" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 20px;"></i>
+                    <h3>기술력 (Tech)</h3>
+                    <p style="margin-top: 10px; color: var(--text-muted);">무맥동 등속도 캠 기술 등 끊임없는 연구개발로 업계를 선도하는 최신 펌프 기술을 적용합니다.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fa-solid fa-leaf" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 20px;"></i>
+                    <h3>친환경 (Eco)</h3>
+                    <p style="margin-top: 10px; color: var(--text-muted);">에너지 효율을 높이고 오폐수 처리 및 수자원을 적극적으로 보호하는 친환경 솔루션을 추구합니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Organization Chart (조직도) -->
+    <section class="org-section fade-up">
+        <div class="container">
+            <h2 class="section-title">조직도</h2>
+            <p class="section-subtitle">각 분야의 전문가들이 모여 비에이텍의 기술과 품질을 이끌어갑니다.</p>
+            
+            <div class="org-chart-wrapper">
+                <div class="org-ceo">
+                    대표이사 조세연
+                </div>
+                
+                <div class="org-departments">
+                    <!-- 생산부 -->
+                    <div class="org-dept">
+                        <div class="org-dept-header">
+                            <h3>생 산 부</h3>
+                            <p>제품생산, 원자재구입</p>
+                        </div>
+                        <div class="org-members">
+                            <div class="org-member">
+                                <span class="org-member-role">부장</span>
+                                <span class="org-member-name">정충구</span>
+                            </div>
+                            <div class="org-member">
+                                <span class="org-member-role">부장</span>
+                                <span class="org-member-name">조태연</span>
+                            </div>
+                            <div class="org-member">
+                                <span class="org-member-role">과장</span>
+                                <span class="org-member-name">김진수</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 관리부 -->
+                    <div class="org-dept">
+                        <div class="org-dept-header">
+                            <h3>관 리 부</h3>
+                            <p>계약 및 공정관리</p>
+                        </div>
+                        <div class="org-members">
+                            <div class="org-member">
+                                <span class="org-member-role">이사</span>
+                                <span class="org-member-name">이원석</span>
+                            </div>
+                            <div class="org-member">
+                                <span class="org-member-role">실장</span>
+                                <span class="org-member-name">김홍인</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 품질보증부 -->
+                    <div class="org-dept">
+                        <div class="org-dept-header">
+                            <h3>품질보증부</h3>
+                            <p>품질관리 및 A/S</p>
+                        </div>
+                        <div class="org-members">
+                            <div class="org-member">
+                                <span class="org-member-role">사원</span>
+                                <span class="org-member-name">정영호</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- History Timeline -->
+    <section class="container fade-up" style="padding-top: 90px;">
+        <h2 class="section-title">연혁</h2>
+        <p class="section-subtitle">비에이텍이 걸어온 길을 소개합니다.</p>
+        
+        <div class="timeline">
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h3>2025 - 현재</h3>
+                    <p>위생안전기준(KC) 인증 획득 (수도용 부스터 펌프 시스템). 경영혁신형 중소기업(Main-Biz) 확인.</p>
+                </div>
+            </div>
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <h3>2020</h3>
+                    <p>특수 등속도 캠 적용 무맥동 정량펌프 (PKD 시리즈) 라인업 확대.</p>
+                </div>
+            </div>
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h3>2015</h3>
+                    <p>강원 춘천시 퇴계제2농공단지 내 자가 공장 및 성능시험장 운영.</p>
+                </div>
+            </div>
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <h3>2012</h3>
+                    <p>ISO 9001:2015 품질경영시스템 인증 획득 및 벤처기업 인증.</p>
+                </div>
+            </div>
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h3>2010</h3>
+                    <p>비에이텍(주) 설립 (설립 당시 명칭: (주)강원유체).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <a href="index.html" class="logo" style="color: white; margin-bottom: 20px;">
+                        <i class="fa-solid fa-water"></i> 비에이텍(주)
+                    </a>
+                    <p>깨끗한 물을 만드는 기술력,<br>신뢰할 수 있는 펌프 전문 제조 기업입니다.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <p><i class="fa-solid fa-location-dot"></i> 강원특별자치도 춘천시 퇴계공단2길 64</p>
+                    <p><i class="fa-solid fa-phone"></i> 033-264-9243</p>
+                    <p><i class="fa-solid fa-fax"></i> 033-251-5747</p>
+                    <p><i class="fa-solid fa-envelope"></i> info@batech.co.kr</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <p><a href="about.html">회사소개</a></p>
+                    <p><a href="equipment.html">장비 및 기술</a></p>
+                    <p><a href="contact.html">오시는 길 / 연락처</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 비에이텍(주). All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

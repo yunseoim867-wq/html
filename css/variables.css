@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap');
+
+:root {
+    /* Color Palette - Blue & White Theme */
+    --primary-color: #0056b3; /* 신뢰감을 주는 블루 */
+    --primary-light: #3385ff;
+    --primary-dark: #003d82;
+    
+    --secondary-color: #00aaff; /* 밝고 깨끗한 물을 상징하는 밝은 블루 */
+    --point-color: #e6f0fa; /* 아주 연한 블루 배경 (화이트 앤 블루 조화) */
+
+    --bg-white: #ffffff;
+    --bg-light: #f5f8fc; /* 연한 그레이-블루 배경 */
+    --bg-dark: #1e293b;
+
+    --text-main: #1f2937;
+    --text-muted: #64748b;
+    --text-light: #ffffff;
+    
+    --border-color: #e2e8f0;
+    
+    /* Typography */
+    --font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+    
+    /* Layout */
+    --header-height: 80px;
+    --max-width: 1200px;
+    
+    /* Shadows & Transitions */
+    --shadow-sm: 0 2px 8px rgba(0, 86, 179, 0.06);
+    --shadow-md: 0 4px 12px rgba(0, 86, 179, 0.1);
+    --shadow-lg: 0 10px 25px rgba(0, 86, 179, 0.15);
+    --transition-fast: 0.2s ease-in-out;
+    --transition-normal: 0.3s ease-in-out;
+}

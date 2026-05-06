@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>오시는 길 & 연락처 | 비에이텍(주)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .page-header {
+            background: linear-gradient(rgba(0, 86, 179, 0.8), rgba(0, 61, 130, 0.8)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            padding: 150px 0 80px;
+            text-align: center;
+            color: white;
+        }
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            padding: 80px 0;
+        }
+
+        .info-card {
+            background: var(--bg-white);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            margin-bottom: 30px;
+        }
+        .info-card h3 {
+            font-size: 1.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 25px;
+            border-bottom: 2px solid var(--point-color);
+            padding-bottom: 15px;
+        }
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .info-icon {
+            background: var(--point-color);
+            color: var(--primary-color);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        .info-text h4 {
+            font-size: 1.1rem;
+            color: var(--text-main);
+            margin-bottom: 5px;
+        }
+        .info-text p {
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .map-container {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            height: 100%;
+            min-height: 450px;
+            position: relative;
+        }
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            min-height: 450px;
+        }
+        
+        .map-overlay-btn {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: var(--bg-white);
+            padding: 10px 20px;
+            border-radius: 6px;
+            box-shadow: var(--shadow-lg);
+            font-weight: 600;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition-fast);
+        }
+        .map-overlay-btn:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Mobile Menu */
+        .mobile-nav {
+            position: fixed; top: 0; right: -100%; width: 300px; height: 100vh;
+            background-color: var(--bg-white); z-index: 1001;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1); transition: var(--transition-normal);
+            padding: 80px 30px; display: flex; flex-direction: column; gap: 20px;
+        }
+        .mobile-nav.active { right: 0; }
+        .mobile-nav a { font-size: 1.2rem; font-weight: 600; border-bottom: 1px solid var(--border-color); padding-bottom: 15px; color: var(--text-main); }
+        .close-menu { position: absolute; top: 25px; right: 25px; font-size: 2rem; cursor: pointer; color: var(--primary-color); }
+        .overlay { position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.5); z-index: 1000; display: none; backdrop-filter: blur(2px); }
+        .overlay.active { display: block; }
+
+        @media (max-width: 900px) {
+            .contact-layout { grid-template-columns: 1fr; }
+            .map-container { min-height: 350px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-water"></i> 비에이텍(주)
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">홈</a>
+                <a href="about.html">회사소개</a>
+                <a href="equipment.html">장비 및 기술</a>
+                <a href="contact.html" class="active">오시는 길 / 연락처</a>
+            </nav>
+            <div class="hamburger"><i class="fa-solid fa-bars"></i></div>
+        </div>
+    </header>
+
+    <div class="overlay"></div>
+    <div class="mobile-nav">
+        <i class="fa-solid fa-xmark close-menu"></i>
+        <a href="index.html">홈</a>
+        <a href="about.html">회사소개</a>
+        <a href="equipment.html">장비 및 기술</a>
+        <a href="contact.html" class="active">오시는 길 / 연락처</a>
+    </div>
+
+    <div class="page-header fade-up">
+        <div class="container">
+            <h1>Contact Us</h1>
+            <p>비에이텍(주)에 문의주시면 친절하고 신속하게 답변해 드리겠습니다.</p>
+        </div>
+    </div>
+
+    <div class="container contact-layout fade-up">
+        <!-- Contact Information -->
+        <div class="contact-info">
+            <div class="info-card">
+                <h3><i class="fa-solid fa-headset" style="margin-right:8px;"></i>연락처 및 운영 시간</h3>
+                
+                <div class="info-item">
+                    <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
+                    <div class="info-text">
+                        <h4>대표 전화</h4>
+                        <p>033-264-9243</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon"><i class="fa-solid fa-fax"></i></div>
+                    <div class="info-text">
+                        <h4>팩스 (Fax)</h4>
+                        <p>033-251-5747</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon"><i class="fa-solid fa-envelope"></i></div>
+                    <div class="info-text">
+                        <h4>이메일 문의</h4>
+                        <p>info@batech.co.kr</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon"><i class="fa-regular fa-clock"></i></div>
+                    <div class="info-text">
+                        <h4>운영 시간</h4>
+                        <p>평일 09:00 ~ 18:00<br>(점심시간 12:00~13:00 / 주말 및 공휴일 휴무)</p>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 30px; text-align: center;">
+                    <a href="mailto:info@batech.co.kr" class="btn btn-primary" style="width: 100%;"><i class="fa-regular fa-paper-plane" style="margin-right:8px;"></i> 빠른 이메일 문의하기</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Location / Map -->
+        <div class="location-info">
+            <div class="info-card" style="padding: 0; border: none; background: transparent; box-shadow: none;">
+                <h3 style="padding: 0 10px; margin-bottom: 15px;"><i class="fa-solid fa-map-location-dot" style="margin-right:8px;"></i>찾아오는 길</h3>
+                <div style="padding: 0 10px; margin-bottom: 20px;">
+                    <p style="font-size: 1.1rem; color: var(--text-main); font-weight: 500;">강원특별자치도 춘천시 퇴계공단2길 64</p>
+                    <p style="color: var(--text-muted);">퇴계제2농공단지 내 자가 공장 / 본사</p>
+                </div>
+                
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3161.4645227768565!2d127.727582!3d37.839886!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3562e6e3f42b3b87%3A0x6b5a7a72d7f8d6!2zR2FuZ3dvbi1kbywgQ2h1bmNoZW9uLXNpLCBUb2VneWVnb25nZGFuIDItZ2lsLCA2NA!5e0!3m2!1sen!2skr!4v1715000000000!5m2!1sen!2skr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    
+                    <a href="https://map.kakao.com/link/search/강원 춘천시 퇴계공단2길 64" target="_blank" class="map-overlay-btn">
+                        <i class="fa-solid fa-diamond-turn-right"></i> 길찾기
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <a href="index.html" class="logo" style="color: white; margin-bottom: 20px;">
+                        <i class="fa-solid fa-water"></i> 비에이텍(주)
+                    </a>
+                    <p>깨끗한 물을 만드는 기술력,<br>신뢰할 수 있는 펌프 전문 제조 기업입니다.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <p><i class="fa-solid fa-location-dot"></i> 강원특별자치도 춘천시 퇴계공단2길 64</p>
+                    <p><i class="fa-solid fa-phone"></i> 033-264-9243</p>
+                    <p><i class="fa-solid fa-fax"></i> 033-251-5747</p>
+                    <p><i class="fa-solid fa-envelope"></i> info@batech.co.kr</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <p><a href="about.html">회사소개</a></p>
+                    <p><a href="equipment.html">장비 및 기술</a></p>
+                    <p><a href="contact.html">오시는 길 / 연락처</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 비에이텍(주). All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>장비 및 시설 | (주) 비에이텍</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .page-header {
+            background: linear-gradient(rgba(0, 86, 179, 0.8), rgba(0, 86, 179, 0.8)), url('https://images.unsplash.com/photo-1504307651254-35680f356fce?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            padding: 120px 0 60px;
+            text-align: center;
+            color: white;
+            margin-bottom: 60px;
+        }
+
+        /* Gallery Grid */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            background: var(--bg-white);
+            transition: var(--transition-normal);
+        }
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        .gallery-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: var(--transition-slow);
+        }
+        .gallery-item:hover .gallery-img {
+            transform: scale(1.05);
+        }
+        .gallery-content {
+            padding: 20px;
+        }
+        .gallery-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 1.25rem;
+        }
+        .gallery-content p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo"><i class="fa-solid fa-water"></i> 비에이텍</a>
+            <nav class="nav-links">
+                <a href="index.html">홈</a>
+                <a href="about.html">회사소개</a>
+                <a href="equipment.html" class="active">장비 및 시설</a>
+                <a href="contact.html">문의 및 오시는 길</a>
+            </nav>
+            <div class="hamburger"><i class="fa-solid fa-bars"></i></div>
+        </div>
+    </header>
+    
+    <!-- Mobile Nav -->
+    <div class="overlay"></div>
+    <div class="mobile-nav">
+        <i class="fa-solid fa-xmark close-menu"></i>
+        <a href="index.html">홈</a>
+        <a href="about.html">회사소개</a>
+        <a href="equipment.html" class="active">장비 및 시설</a>
+        <a href="contact.html">문의 및 오시는 길</a>
+    </div>
+
+    <!-- Page Header -->
+    <div class="page-header fade-up">
+        <div class="container">
+            <h1>장비 및 시설</h1>
+            <p>최신 설비와 체계적인 시스템으로 최고의 품질을 완성합니다.</p>
+        </div>
+    </div>
+
+    <!-- Equipment Section -->
+    <section class="container fade-up">
+        <h2 class="section-title">주요 장비 소개</h2>
+        <p class="section-subtitle">다양한 산업 현장의 요구를 충족시키는 고성능 펌프 및 수처리 장비를 보유 및 제작하고 있습니다.</p>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <div style="overflow:hidden;">
+                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="다단 원심 펌프" class="gallery-img">
+                </div>
+                <div class="gallery-content">
+                    <h3>다단 원심 펌프 (Multistage Pump)</h3>
+                    <p>고양정 시스템에 적합하며, 산업용 보일러 급수 및 소방 설비에 주로 사용됩니다. 탁월한 내구성을 자랑합니다.</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div style="overflow:hidden;">
+                    <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="수중 모터 펌프" class="gallery-img">
+                </div>
+                <div class="gallery-content">
+                    <h3>수중 모터 펌프 (Submersible Pump)</h3>
+                    <p>오폐수 처리장, 빗물 배수장 등에 사용되며 수중에서도 완벽한 방수와 강력한 출력을 유지합니다.</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div style="overflow:hidden;">
+                    <img src="https://images.unsplash.com/photo-1563223552-30d2138eb171?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="인라인 펌프" class="gallery-img">
+                </div>
+                <div class="gallery-content">
+                    <h3>인라인 펌프 (In-line Pump)</h3>
+                    <p>공간 절약형 설계로 건물 내 냉난방 순환용으로 최적화되어 있으며 진동과 소음이 적습니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Facilities Section -->
+    <section class="section-light fade-up">
+        <div class="container">
+            <h2 class="section-title">생산 및 테스트 시설</h2>
+            <p class="section-subtitle">안전하고 청결한 작업 환경에서 엄격한 품질 테스트를 거쳐 제품을 출하합니다.</p>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <div style="overflow:hidden;">
+                        <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="1공장 전경" class="gallery-img">
+                    </div>
+                    <div class="gallery-content">
+                        <h3>제 1 생산 공장</h3>
+                        <p>자동화 설비가 구축된 메인 공장으로, 정밀 부품 가공 및 조립이 이루어집니다.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div style="overflow:hidden;">
+                        <img src="https://images.unsplash.com/photo-1581092334651-ddf701c40212?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="성능 테스트룸" class="gallery-img">
+                    </div>
+                    <div class="gallery-content">
+                        <h3>성능 테스트 랩</h3>
+                        <p>출하 전 펌프의 양정, 유량, 효율을 측정하는 첨단 테스트 설비를 운용합니다.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div style="overflow:hidden;">
+                        <img src="https://images.unsplash.com/photo-1503945438517-f65904a52ce6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="물류 창고" class="gallery-img">
+                    </div>
+                    <div class="gallery-content">
+                        <h3>물류 및 보관 창고</h3>
+                        <p>체계적인 재고 관리 시스템을 통해 고객이 원하는 시기에 신속하게 제품을 공급합니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">
+                &copy; 2026 (주) 비에이텍. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
