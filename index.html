@@ -241,8 +241,8 @@
             <h1>깨끗한 물을 만드는 기술,<br>비에이텍(주)</h1>
             <p>ISO 9001 품질경영 및 KC 위생안전 인증을 바탕으로,<br>최상의 펌프 기술력과 안정적인 수처리 솔루션을 제공합니다.</p>
             <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
-                <a href="./contact.html" class="btn btn-primary">빠른 문의하기</a>
-                <a href="./about.html" class="btn btn-outline">회사 소개서 보기</a>
+                <a href="./contact.html" class="btn btn-primary">상담 문의</a>
+                <a href="./about.html" class="btn btn-outline">회사소개</a>
             </div>
         </div>
     </section>
@@ -340,9 +340,6 @@
             <div class="pdf-modal-header">
                 <h3 id="pdfTitle">유지관리 지침서</h3>
                 <div class="pdf-modal-actions">
-                    <a id="pdfDownloadBtn" href="" download class="pdf-action-btn" title="다운로드">
-                        <i class="fa-solid fa-download"></i>
-                    </a>
                     <div class="pdf-close-btn" title="닫기">
                         <i class="fa-solid fa-xmark"></i>
                     </div>
@@ -353,7 +350,7 @@
                     <div class="spinner"></div>
                     <p>문서를 불러오는 중입니다...</p>
                 </div>
-                <iframe id="pdfFrame" src="" frameborder="0"></iframe>
+                <iframe id="pdfFrame" src="" type="application/pdf" frameborder="0"></iframe>
             </div>
         </div>
     </div>
@@ -400,9 +397,9 @@
     </div>
 
     <script src="./js/script.js"></script>
-    <script src="./js/equipment.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // 1. Slider Logic
             const track = document.getElementById('sliderTrack');
             const slides = Array.from(track.children);
             const nextBtn = document.getElementById('nextBtn');
@@ -411,19 +408,20 @@
             
             let currentIndex = 0;
             
-            // Create dots
-            slides.forEach((_, index) => {
-                const dot = document.createElement('div');
-                dot.classList.add('dot');
-                if (index === 0) dot.classList.add('active');
-                dot.addEventListener('click', () => goToSlide(index));
-                dotsContainer.appendChild(dot);
-            });
+            if (slides.length > 0 && dotsContainer) {
+                slides.forEach((_, index) => {
+                    const dot = document.createElement('div');
+                    dot.classList.add('dot');
+                    if (index === 0) dot.classList.add('active');
+                    dot.addEventListener('click', () => goToSlide(index));
+                    dotsContainer.appendChild(dot);
+                });
+            }
             
-            const dots = Array.from(dotsContainer.children);
+            const dots = dotsContainer ? Array.from(dotsContainer.children) : [];
             
             function updateSlider() {
-                track.style.transform = `translateX(-${currentIndex * 100}%)`;
+                if (track) track.style.transform = `translateX(-${currentIndex * 100}%)`;
                 dots.forEach((dot, index) => {
                     dot.classList.toggle('active', index === currentIndex);
                 });
@@ -434,26 +432,71 @@
                 updateSlider();
             }
             
-            nextBtn.addEventListener('click', () => {
+            if (nextBtn) nextBtn.addEventListener('click', () => {
                 currentIndex = (currentIndex + 1) % slides.length;
                 updateSlider();
             });
             
-            prevBtn.addEventListener('click', () => {
+            if (prevBtn) prevBtn.addEventListener('click', () => {
                 currentIndex = (currentIndex - 1 + slides.length) % slides.length;
                 updateSlider();
             });
 
-            // Touch support for mobile
-            let touchStartX = 0;
-            let touchEndX = 0;
-            
-            track.addEventListener('touchstart', e => touchStartX = e.changedTouches[0].screenX);
-            track.addEventListener('touchend', e => {
-                touchEndX = e.changedTouches[0].screenX;
-                if (touchStartX - touchEndX > 50) nextBtn.click();
-                if (touchEndX - touchStartX > 50) prevBtn.click();
+            // 2. PDF Modal Logic (Internalized)
+            const modal = document.getElementById('pdfModal');
+            const modalFrame = document.getElementById('pdfFrame');
+            const modalTitle = document.getElementById('pdfTitle');
+            const loader = document.querySelector('.pdf-loader');
+            const closeBtn = document.querySelector('.pdf-close-btn');
+
+            const openModal = (url, title) => {
+                if (url) {
+                    if (loader) loader.classList.remove('hidden');
+                    if (modalTitle) modalTitle.textContent = title || "문서 보기";
+                    if (modal) modal.classList.add('show');
+                    document.body.style.overflow = 'hidden';
+                    setTimeout(() => {
+                        if (modalFrame) modalFrame.src = url;
+                    }, 100);
+                }
+            };
+
+            const closeModal = () => {
+                if (modal) modal.classList.remove('show');
+                document.body.style.overflow = '';
+                setTimeout(() => {
+                    if (modalFrame) modalFrame.src = '';
+                    if (loader) loader.classList.remove('hidden');
+                }, 300);
+            };
+
+            // Global Click Listener for elements with data-file or data-pdf
+            document.addEventListener('click', (e) => {
+                const target = e.target.closest('[data-file], [data-pdf]');
+                if (target) {
+                    e.preventDefault();
+                    const pdfUrl = target.getAttribute('data-file') || target.getAttribute('data-pdf');
+                    const title = target.querySelector('h3') ? target.querySelector('h3').textContent : 
+                                 (target.textContent.trim() || "문서 보기");
+                    openModal(pdfUrl, title);
+                }
             });
+
+            if (closeBtn) closeBtn.addEventListener('click', closeModal);
+            if (modal) {
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) closeModal();
+                });
+            }
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal && modal.classList.contains('show')) closeModal();
+            });
+
+            if (modalFrame) {
+                modalFrame.addEventListener('load', () => {
+                    if (loader) loader.classList.add('hidden');
+                });
+            }
         });
     </script>
 </body>

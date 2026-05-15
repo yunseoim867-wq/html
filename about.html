@@ -102,8 +102,8 @@
 
     <header>
         <div class="container header-container">
-            <a href="index.html" class="logo">
-                <i class="fa-solid fa-water"></i> 비에이텍
+            <a href="./index.html" class="logo">
+                <i class="fa-solid fa-water"></i> 비에이텍(주)
             </a>
             <nav class="nav-links">
                 <a href="./index.html">홈</a>
@@ -118,13 +118,13 @@
 
     <div class="page-header fade-up">
         <div class="container">
-            <h1>About Biatech</h1>
+            <h1>Company Introduction</h1>
             <p style="color: rgba(255,255,255,0.8); font-size: 1.2rem;">신뢰와 기술을 바탕으로 수처리 산업의 미래를 열어갑니다.</p>
         </div>
     </div>
 
     <!-- Overview Section -->
-    <section class="container fade-up">
+    <section class="container fade-up" style="padding-top: 100px; padding-bottom: 100px;">
         <div class="overview-content">
             <div class="overview-text">
                 <h2 style="font-size: 2.2rem; margin-bottom: 24px;">깨끗한 물을 만드는 사람들,<br>(주)비에이텍입니다.</h2>
@@ -156,13 +156,16 @@
                 <div class="brochure-display">
                     <img src="./브로슈어.png" alt="비에이텍 회사 브로슈어">
                 </div>
-
+                <div class="brochure-actions" style="margin-top: 40px; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                    <a href="#" class="btn btn-primary" data-pdf="./지명원 (1).pdf">지명원(회사소개서) 보기</a>
+                    <a href="#" class="btn btn-outline" data-pdf="./부스터펌프 유지관리지침서.pdf">부스터펌프 지침서 보기</a>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Core Values -->
-    <section class="fade-up">
+    <section class="fade-up" style="padding: 100px 0;">
         <div class="container">
             <h2 class="section-title">비전 및 핵심 가치</h2>
             <p class="section-subtitle">우리는 다음의 가치를 바탕으로 고객에게 최고의 경험을 제공합니다.</p>
@@ -190,7 +193,7 @@
     </section>
 
     <!-- Organization Section -->
-    <section class="fade-up" style="background-color: var(--bg-divider);">
+    <section class="fade-up" style="background-color: var(--bg-divider); padding: 100px 0;">
         <div class="container">
             <h2 class="section-title">조직도</h2>
             <p class="section-subtitle">효율적인 업무 분담과 전문성을 바탕으로 최적의 서비스를 제공합니다.</p>
@@ -275,11 +278,10 @@
             </div>
 
         </div>
-        </div>
     </section>
 
     <!-- History Timeline -->
-    <section class="container fade-up">
+    <section class="container fade-up" style="padding: 100px 0;">
         <h2 class="section-title">연혁</h2>
         <p class="section-subtitle">비에이텍이 걸어온 혁신의 발자취입니다.</p>
 
@@ -307,12 +309,33 @@
         </div>
     </section>
 
+    <!-- Floating PDF Viewer Modal -->
+    <div id="pdfModal" class="pdf-modal">
+        <div class="pdf-modal-container">
+            <div class="pdf-modal-header">
+                <h3 id="pdfTitle">유지관리 지침서</h3>
+                <div class="pdf-modal-actions">
+                    <div class="pdf-close-btn" title="닫기">
+                        <i class="fa-solid fa-xmark"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="pdf-modal-body">
+                <div class="pdf-loader">
+                    <div class="spinner"></div>
+                    <p>문서를 불러오는 중입니다...</p>
+                </div>
+                <iframe id="pdfFrame" src="" type="application/pdf" frameborder="0"></iframe>
+            </div>
+        </div>
+    </div>
+
     <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-col">
-                    <a href="index.html" class="logo">
-                        <i class="fa-solid fa-water"></i> 비에이텍
+                    <a href="./index.html" class="logo">
+                        <i class="fa-solid fa-water"></i> 비에이텍(주)
                     </a>
                     <p>깨끗한 물을 만드는 기술력,<br>신뢰할 수 있는 펌프 전문 제조 기업입니다.</p>
                 </div>
@@ -325,9 +348,9 @@
                 </div>
                 <div class="footer-col">
                     <h3>Quick Links</h3>
-                    <p><a href="about.html">회사소개</a></p>
-                    <p><a href="trust.html">인증 및 신뢰</a></p>
-                    <p><a href="contact.html">오시는 길 / 연락처</a></p>
+                    <p><a href="./about.html">회사소개</a></p>
+                    <p><a href="./trust.html">인증 및 신뢰</a></p>
+                    <p><a href="./contact.html">오시는 길 / 연락처</a></p>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -341,13 +364,70 @@
     <div class="mobile-nav">
         <i class="fa-solid fa-xmark close-menu"></i>
         <a href="./index.html">홈</a>
-        <a href="./about.html">회사소개</a>
+        <a href="./about.html" class="active">회사소개</a>
         <a href="./equipment.html">장비 및 기술</a>
         <a href="./trust.html">인증 및 신뢰</a>
         <a href="./contact.html">오시는 길 / 연락처</a>
     </div>
 
     <script src="./js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // PDF Modal Logic (Localized for about.html)
+            const modal = document.getElementById('pdfModal');
+            const modalFrame = document.getElementById('pdfFrame');
+            const modalTitle = document.getElementById('pdfTitle');
+            const loader = document.querySelector('.pdf-loader');
+            const closeBtn = document.querySelector('.pdf-close-btn');
+
+            const openModal = (url, title) => {
+                if (url) {
+                    if (loader) loader.classList.remove('hidden');
+                    if (modalTitle) modalTitle.textContent = title || "문서 보기";
+                    if (modal) modal.classList.add('show');
+                    document.body.style.overflow = 'hidden';
+                    setTimeout(() => {
+                        if (modalFrame) modalFrame.src = url;
+                    }, 100);
+                }
+            };
+
+            const closeModal = () => {
+                if (modal) modal.classList.remove('show');
+                document.body.style.overflow = '';
+                setTimeout(() => {
+                    if (modalFrame) modalFrame.src = '';
+                    if (loader) loader.classList.remove('hidden');
+                }, 300);
+            };
+
+            document.addEventListener('click', (e) => {
+                const target = e.target.closest('[data-file], [data-pdf]');
+                if (target) {
+                    e.preventDefault();
+                    const pdfUrl = target.getAttribute('data-file') || target.getAttribute('data-pdf');
+                    const title = target.textContent.trim() || "문서 보기";
+                    openModal(pdfUrl, title);
+                }
+            });
+
+            if (closeBtn) closeBtn.addEventListener('click', closeModal);
+            if (modal) {
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) closeModal();
+                });
+            }
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal && modal.classList.contains('show')) closeModal();
+            });
+
+            if (modalFrame) {
+                modalFrame.addEventListener('load', () => {
+                    if (loader) loader.classList.add('hidden');
+                });
+            }
+        });
+    </script>
 </body>
 
 </html>
