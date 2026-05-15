@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회사소개 | (주)비에이텍</title>
+
+    <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/variables.css">
-    <link rel="stylesheet" href="css/style.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/variables.css">
+    <link rel="stylesheet" href="/css/style.css">
+
     <style>
         .page-header {
-            background: linear-gradient(rgba(30, 58, 138, 0.9), rgba(30, 58, 138, 0.7)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            background:
+                linear-gradient(rgba(30, 58, 138, 0.9), rgba(30, 58, 138, 0.7)),
+                url('/assets/images/header-bg.jpg') center/cover;
             padding: 160px 0 80px;
             text-align: center;
             color: white;
@@ -28,10 +34,27 @@
             align-items: center;
         }
 
-        .overview-image img {
-            width: 100%;
+        .overview-video {
             border-radius: var(--border-radius);
+            overflow: hidden;
             box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-color);
+            background: #000;
+            position: relative;
+            padding-top: 56.25%;
+        }
+
+        .overview-video video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+
+            /* 영상 전체 보이게 */
+            object-fit: contain;
+
+            background: #000;
         }
 
         .value-card {
@@ -69,27 +92,6 @@
             box-shadow: 0 0 0 4px #fff;
         }
 
-        /* Video Overview Styling */
-        .overview-video {
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--shadow-lg);
-            border: 1px solid var(--border-color);
-            background: #000;
-            position: relative;
-            padding-top: 56.25%;
-            /* 16:9 Aspect Ratio */
-        }
-
-        .overview-video video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
         @media (max-width: 900px) {
             .overview-content {
                 grid-template-columns: 1fr;
@@ -100,254 +102,201 @@
 
 <body>
 
+    <!-- HEADER -->
     <header>
         <div class="container header-container">
-            <a href="index.html" class="logo">
+
+            <a href="/index.html" class="logo">
                 <i class="fa-solid fa-water"></i> 비에이텍
             </a>
+
             <nav class="nav-links">
-                <a href="index.html">홈</a>
-                <a href="about.html" class="active">회사소개</a>
-                <a href="equipment.html">장비 및 기술</a>
-                <a href="trust.html">인증 및 신뢰</a>
-                <a href="contact.html">오시는 길 / 연락처</a>
+                <a href="/index.html">홈</a>
+                <a href="/about.html" class="active">회사소개</a>
+                <a href="/equipment.html">장비 및 기술</a>
+                <a href="/trust.html">인증 및 신뢰</a>
+                <a href="/contact.html">오시는 길 / 연락처</a>
             </nav>
-            <div class="hamburger"><i class="fa-solid fa-bars"></i></div>
+
+            <div class="hamburger">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+
         </div>
     </header>
 
+    <!-- PAGE HEADER -->
     <div class="page-header fade-up">
         <div class="container">
             <h1>About Biatech</h1>
-            <p style="color: rgba(255,255,255,0.8); font-size: 1.2rem;">신뢰와 기술을 바탕으로 수처리 산업의 미래를 열어갑니다.</p>
+
+            <p style="color: rgba(255,255,255,0.8); font-size: 1.2rem;">
+                신뢰와 기술을 바탕으로 수처리 산업의 미래를 열어갑니다.
+            </p>
         </div>
     </div>
 
-    <!-- Overview Section -->
+    <!-- OVERVIEW -->
     <section class="container fade-up">
+
         <div class="overview-content">
+
+            <!-- TEXT -->
             <div class="overview-text">
-                <h2 style="font-size: 2.2rem; margin-bottom: 24px;">깨끗한 물을 만드는 사람들,<br>(주)비에이텍입니다.</h2>
-                <p style="margin-bottom: 16px; font-size: 1.1rem; color: var(--text-body);">비에이텍은 2010년 설립 이래 수처리 펌프
-                    분야에서 지속적인 연구 개발과 철저한 품질 관리를 통해 고객에게 최고의 솔루션을 제공해 왔습니다.</p>
-                <p style="margin-bottom: 16px; font-size: 1.1rem; color: var(--text-body);">최신 설비와 숙련된 전문 인력을 바탕으로 맞춤형
-                    펌프 제작부터 완벽한 시공, 그리고 사후 관리까지 책임지는 원스톱 서비스를 실현합니다.</p>
-                <p style="font-size: 1.1rem; color: var(--text-body);">우리의 목표는 단순한 기계 제작이 아닌, 생명의 근원인 물을 안전하게 관리하고 환경을
-                    지키는 가치 있는 기술을 제공하는 것입니다.</p>
+
+                <h2 style="font-size: 2.2rem; margin-bottom: 24px;">
+                    깨끗한 물을 만드는 사람들,<br>
+                    (주)비에이텍입니다.
+                </h2>
+
+                <p style="margin-bottom: 16px; font-size: 1.1rem; color: var(--text-body);">
+                    비에이텍은 2010년 설립 이래 수처리 펌프 분야에서 지속적인 연구 개발과
+                    철저한 품질 관리를 통해 고객에게 최고의 솔루션을 제공해 왔습니다.
+                </p>
+
+                <p style="margin-bottom: 16px; font-size: 1.1rem; color: var(--text-body);">
+                    최신 설비와 숙련된 전문 인력을 바탕으로 맞춤형 펌프 제작부터
+                    완벽한 시공, 그리고 사후 관리까지 책임지는 원스톱 서비스를 실현합니다.
+                </p>
+
+                <p style="font-size: 1.1rem; color: var(--text-body);">
+                    우리의 목표는 단순한 기계 제작이 아닌,
+                    생명의 근원인 물을 안전하게 관리하고
+                    환경을 지키는 가치 있는 기술을 제공하는 것입니다.
+                </p>
+
             </div>
+
+            <!-- VIDEO -->
             <div class="overview-image">
+
                 <div class="overview-video">
-                    <video controls preload="metadata" poster="images/video-poster.png">
-                        <source src="beatech.mp4" type="video/mp4">
+
+                    <video
+                        controls
+                        preload="metadata"
+                        playsinline
+                        muted
+                        poster="/assets/images/video-poster.png"
+                    >
+
+                        <source
+                            src="/assets/videos/biatech-promo.mp4"
+                            type="video/mp4"
+                        >
+
+                        브라우저가 동영상을 지원하지 않습니다.
 
                     </video>
+
                 </div>
+
             </div>
+
         </div>
+
     </section>
 
-    <!-- Company Brochure Section -->
-    <section id="brochure" class="brochure-section fade-up" style="background-color: var(--bg-white);">
+    <!-- BROCHURE -->
+    <section
+        id="brochure"
+        class="brochure-section fade-up"
+        style="background-color: var(--bg-white);"
+    >
+
         <div class="container">
+
             <h2 class="section-title">회사 브로슈어</h2>
-            <p class="section-subtitle">비에이텍의 핵심 역량과 주요 제품 라인업을 한눈에 확인하실 수 있습니다.</p>
+
+            <p class="section-subtitle">
+                비에이텍의 핵심 역량과 주요 제품 라인업을 한눈에 확인하실 수 있습니다.
+            </p>
 
             <div class="brochure-container">
+
                 <div class="brochure-display">
-                    <img src="브로슈어.png" alt="비에이텍 회사 브로슈어">
+
+                    <img
+                        src="/assets/images/brochure.png"
+                        alt="비에이텍 회사 브로슈어"
+                    >
+
                 </div>
 
             </div>
+
         </div>
+
     </section>
 
-    <!-- Core Values -->
-    <section class="fade-up">
-        <div class="container">
-            <h2 class="section-title">비전 및 핵심 가치</h2>
-            <p class="section-subtitle">우리는 다음의 가치를 바탕으로 고객에게 최고의 경험을 제공합니다.</p>
-            <div class="equipment-grid">
-                <div class="value-card">
-                    <i class="fa-solid fa-shield-halved"
-                        style="font-size: 3rem; color: var(--primary-color); margin-bottom: 24px;"></i>
-                    <h3>신뢰성 (Trust)</h3>
-                    <p>고객과의 약속을 최우선으로 하며, 엄격한 품질 관리를 통해 고장 없는 견고한 제품을 제공합니다.</p>
-                </div>
-                <div class="value-card">
-                    <i class="fa-solid fa-microchip"
-                        style="font-size: 3rem; color: var(--primary-color); margin-bottom: 24px;"></i>
-                    <h3>기술력 (Tech)</h3>
-                    <p>무맥동 등속도 캠 기술 등 끊임없는 연구개발로 업계를 선도하는 최신 펌프 기술을 적용합니다.</p>
-                </div>
-                <div class="value-card">
-                    <i class="fa-solid fa-leaf"
-                        style="font-size: 3rem; color: var(--primary-color); margin-bottom: 24px;"></i>
-                    <h3>친환경 (Eco)</h3>
-                    <p>에너지 효율을 높이고 오폐수 처리 및 수자원을 적극적으로 보호하는 친환경 솔루션을 추구합니다.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Organization Section -->
-    <section class="fade-up" style="background-color: var(--bg-divider);">
-        <div class="container">
-            <h2 class="section-title">조직도</h2>
-            <p class="section-subtitle">효율적인 업무 분담과 전문성을 바탕으로 최적의 서비스를 제공합니다.</p>
-
-            <div class="org-tree-wrapper">
-                <div class="org-tree">
-                    <!-- Top Level: CEO -->
-                    <div class="org-node ceo">
-                        <h4>조세연</h4>
-                        <p>대표이사</p>
-                    </div>
-
-                    <!-- Middle Level: Departments -->
-                    <div class="org-level">
-                        <!-- 생산부 -->
-                        <div class="org-dept-container">
-                            <div class="org-node dept">
-                                <div class="org-dept-header">
-                                    <span class="dept-icon"></span>
-                                    <h4>생산부</h4>
-                                </div>
-                                <p>제품생산 / 원자재구입</p>
-                            </div>
-                            <!-- Members -->
-                            <div class="org-members-list">
-                                <div class="org-node member-node">
-                                    <h4>정충구</h4>
-                                    <p>부장</p>
-                                </div>
-                                <div class="org-node member-node">
-                                    <h4>조태연</h4>
-                                    <p>부장</p>
-                                </div>
-                                <div class="org-node member-node">
-                                    <h4>김진수</h4>
-                                    <p>과장</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- 관리부 -->
-                        <div class="org-dept-container">
-                            <div class="org-node dept">
-                                <div class="org-dept-header">
-                                    <span class="dept-icon"></span>
-                                    <h4>관리부</h4>
-                                </div>
-                                <p>계약 / 공정관리</p>
-                            </div>
-                            <!-- Members -->
-                            <div class="org-members-list">
-                                <div class="org-node member-node">
-                                    <h4>이원석</h4>
-                                    <p>이사</p>
-                                </div>
-                                <div class="org-node member-node">
-                                    <h4>정영호</h4>
-                                    <p>사원</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- 품질보증부 -->
-                        <div class="org-dept-container">
-                            <div class="org-node dept">
-                                <div class="org-dept-header">
-                                    <span class="dept-icon"></span>
-                                    <h4>품질보증부</h4>
-                                </div>
-                                <p>품질관리 / A/S</p>
-                            </div>
-                            <!-- Members -->
-                            <div class="org-members-list">
-                                <div class="org-node member-node">
-                                    <h4>김홍인</h4>
-                                    <p>실장</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-        </div>
-    </section>
-
-    <!-- History Timeline -->
-    <section class="container fade-up">
-        <h2 class="section-title">연혁</h2>
-        <p class="section-subtitle">비에이텍이 걸어온 혁신의 발자취입니다.</p>
-
-        <div style="max-width: 800px; margin: 0 auto;">
-            <div class="timeline-item">
-                <h3 style="color: var(--primary-color); margin-bottom: 8px;">2025 - 현재</h3>
-                <p>위생안전기준(KC) 인증 획득 (수도용 부스터 펌프 시스템). 경영혁신형 중소기업(Main-Biz) 확인.</p>
-            </div>
-            <div class="timeline-item">
-                <h3 style="color: var(--primary-color); margin-bottom: 8px;">2020</h3>
-                <p>특수 등속도 캠 적용 무맥동 정량펌프 (PKD 시리즈) 라인업 확대.</p>
-            </div>
-            <div class="timeline-item">
-                <h3 style="color: var(--primary-color); margin-bottom: 8px;">2015</h3>
-                <p>강원 춘천시 퇴계제2농공단지 내 자가 공장 및 성능시험장 운영.</p>
-            </div>
-            <div class="timeline-item">
-                <h3 style="color: var(--primary-color); margin-bottom: 8px;">2012</h3>
-                <p>ISO 9001:2015 품질경영시스템 인증 획득 및 벤처기업 인증.</p>
-            </div>
-            <div class="timeline-item">
-                <h3 style="color: var(--primary-color); margin-bottom: 8px;">2010</h3>
-                <p>비에이텍(주) 설립 (설립 당시 명칭: (주)강원유체).</p>
-            </div>
-        </div>
-    </section>
-
+    <!-- FOOTER -->
     <footer>
+
         <div class="container">
+
             <div class="footer-content">
+
                 <div class="footer-col">
-                    <a href="index.html" class="logo">
+
+                    <a href="/index.html" class="logo">
                         <i class="fa-solid fa-water"></i> 비에이텍
                     </a>
-                    <p>깨끗한 물을 만드는 기술력,<br>신뢰할 수 있는 펌프 전문 제조 기업입니다.</p>
+
+                    <p>
+                        깨끗한 물을 만드는 기술력,<br>
+                        신뢰할 수 있는 펌프 전문 제조 기업입니다.
+                    </p>
+
                 </div>
+
                 <div class="footer-col">
+
                     <h3>Contact Us</h3>
-                    <p><i class="fa-solid fa-location-dot"></i> 강원특별자치도 춘천시 퇴계공단2길 64</p>
-                    <p><i class="fa-solid fa-phone"></i> 033-264-9243</p>
-                    <p><i class="fa-solid fa-fax"></i> 033-251-5747</p>
-                    <p><i class="fa-solid fa-envelope"></i> gwf0123@hanmail.net</p>
+
+                    <p>
+                        <i class="fa-solid fa-location-dot"></i>
+                        강원특별자치도 춘천시 퇴계공단2길 64
+                    </p>
+
+                    <p>
+                        <i class="fa-solid fa-phone"></i>
+                        033-264-9243
+                    </p>
+
+                    <p>
+                        <i class="fa-solid fa-envelope"></i>
+                        gwf0123@hanmail.net
+                    </p>
+
                 </div>
-                <div class="footer-col">
-                    <h3>Quick Links</h3>
-                    <p><a href="about.html">회사소개</a></p>
-                    <p><a href="trust.html">인증 및 신뢰</a></p>
-                    <p><a href="contact.html">오시는 길 / 연락처</a></p>
-                </div>
+
             </div>
+
             <div class="footer-bottom">
                 &copy; 2026 (주) 비에이텍. All rights reserved.
             </div>
+
         </div>
+
     </footer>
 
-    <!-- Mobile Menu Overlay -->
+    <!-- MOBILE MENU -->
     <div class="overlay"></div>
+
     <div class="mobile-nav">
+
         <i class="fa-solid fa-xmark close-menu"></i>
-        <a href="index.html">홈</a>
-        <a href="about.html">회사소개</a>
-        <a href="equipment.html">장비 및 기술</a>
-        <a href="trust.html">인증 및 신뢰</a>
-        <a href="contact.html">오시는 길 / 연락처</a>
+
+        <a href="/index.html">홈</a>
+        <a href="/about.html">회사소개</a>
+        <a href="/equipment.html">장비 및 기술</a>
+        <a href="/trust.html">인증 및 신뢰</a>
+        <a href="/contact.html">오시는 길 / 연락처</a>
+
     </div>
 
-    <script src="js/script.js"></script>
-</body>
+    <!-- JS -->
+    <script src="/js/script.js"></script>
 
+</body>
 </html>
