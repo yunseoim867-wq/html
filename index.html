@@ -8,58 +8,36 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/style.css">
+
+
     <style>
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0, 86, 179, 0.75), rgba(0, 61, 130, 0.6)), url('https://images.unsplash.com/photo-1542385151-efd9000785a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7)), url('https://images.unsplash.com/photo-1542385151-efd9000785a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            color: var(--bg-white);
             padding-top: var(--header-height);
             position: relative;
         }
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: 0; left: 0; width: 100%; height: 120px;
-            background: linear-gradient(to top, var(--bg-white), transparent);
-        }
-        .hero-content {
-            z-index: 2;
-            padding: 0 20px;
-        }
         .hero-content h1 {
-            font-size: 3.8rem;
-            margin-bottom: 25px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            font-weight: 700;
+            font-size: 4.5rem;
+            margin-bottom: 24px;
+            color: var(--secondary-color);
         }
         .hero-content p {
-            font-size: 1.4rem;
-            margin-bottom: 45px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            font-size: 1.5rem;
+            margin-bottom: 48px;
+            color: var(--text-body);
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
-            line-height: 1.6;
-        }
-        
-        .services-section {
-            background-color: var(--bg-white);
-            padding-top: 40px;
-        }
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
         }
         .service-card {
-            background: var(--bg-white);
-            padding: 50px 30px;
-            border-radius: 12px;
+            background: #fff;
+            padding: 48px 32px;
+            border-radius: var(--border-radius);
             box-shadow: var(--shadow-sm);
             text-align: center;
             transition: var(--transition-normal);
@@ -68,148 +46,161 @@
         .service-card:hover {
             transform: translateY(-10px);
             box-shadow: var(--shadow-lg);
-            border-bottom: 5px solid var(--primary-color);
+            border-color: var(--primary-color);
         }
         .service-icon {
             font-size: 3rem;
             color: var(--primary-color);
-            margin-bottom: 25px;
-            background: var(--point-color);
+            margin-bottom: 24px;
+            background: rgba(14, 165, 233, 0.05);
             width: 80px;
             height: 80px;
             line-height: 80px;
             border-radius: 50%;
             display: inline-block;
-            transition: var(--transition-normal);
         }
-        .service-card:hover .service-icon {
-            background: var(--primary-color);
-            color: var(--bg-white);
-        }
-        .service-card h3 {
-            color: var(--primary-dark);
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
-
-        .tech-section {
-            background-color: var(--bg-light);
-        }
-        .tech-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-        .tech-image {
-            border-radius: 16px;
+        /* Tech Slider Styles */
+        .tech-slider {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            min-height: 450px;
             overflow: hidden;
+            border-radius: var(--border-radius);
             box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+        }
+        .slider-track {
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            height: 100%;
+        }
+        .slide {
+            min-width: 100%;
+            height: 100%;
             position: relative;
         }
-        .tech-image img {
+        .slide img {
             width: 100%;
+            height: 100%;
+            object-fit: cover;
             display: block;
-            transition: transform 0.5s ease;
         }
-        .tech-image:hover img {
-            transform: scale(1.05);
+        .slide::after {
+            content: attr(data-label);
+            position: absolute;
+            bottom: 40px;
+            left: 20px;
+            background: rgba(30, 58, 138, 0.8);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            backdrop-filter: blur(4px);
+            opacity: 0;
+            transition: 0.3s;
         }
-        .tech-content h3 {
-            font-size: 2.2rem;
-            color: var(--primary-dark);
-            margin-bottom: 20px;
-            font-weight: 700;
+        .tech-slider:hover .slide::after { opacity: 1; }
+        
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            box-shadow: var(--shadow-sm);
+            color: var(--secondary-color);
+            transition: var(--transition-normal);
         }
-        .tech-content p {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            margin-bottom: 30px;
+        .slider-btn:hover {
+            background: var(--primary-color);
+            color: #fff;
+        }
+        .prev-btn { left: 20px; }
+        .next-btn { right: 20px; }
+        
+        .slider-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 10;
+            background: rgba(255,255,255,0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            backdrop-filter: blur(4px);
+        }
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: var(--transition-normal);
+        }
+        .dot.active {
+            background: #fff;
+            width: 24px;
+            border-radius: 4px;
         }
         .tech-list li {
-            margin-bottom: 20px;
+            margin-bottom: 16px;
             display: flex;
-            align-items: flex-start;
-            gap: 15px;
-            font-size: 1.15rem;
-            color: var(--text-main);
-            font-weight: 500;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.1rem;
+            color: var(--text-body);
         }
         .tech-list i {
             color: var(--primary-color);
-            font-size: 1.3rem;
-            margin-top: 3px;
         }
-
         .trust-section {
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-            color: white;
+            background-color: var(--secondary-color) !important;
+            color: #fff !important;
             text-align: center;
+            padding: 120px 0;
         }
-        .trust-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
+        .trust-section .section-title, 
+        .trust-section p {
+            color: #fff !important;
         }
         .trust-item h2 {
-            font-size: 4rem;
-            color: var(--secondary-color);
-            margin-bottom: 10px;
+            font-size: 4.5rem;
+            color: var(--accent-color);
+            margin-bottom: 12px;
             font-weight: 800;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
         .trust-item p {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             font-weight: 500;
             opacity: 0.9;
         }
-        .cert-logos {
-            margin-top: 60px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
         .cert-item {
             background: rgba(255,255,255,0.1);
-            padding: 15px 30px;
-            border-radius: 8px;
+            padding: 20px 32px;
+            border-radius: var(--border-radius);
             border: 1px solid rgba(255,255,255,0.2);
             font-weight: 600;
-            font-size: 1.1rem;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            color: #fff;
+            transition: var(--transition-normal);
         }
-
-        /* Mobile Menu Details */
-        .mobile-nav {
-            position: fixed; top: 0; right: -100%; width: 300px; height: 100vh;
-            background-color: var(--bg-white); z-index: 1001;
-            box-shadow: -5px 0 15px rgba(0,0,0,0.1); transition: var(--transition-normal);
-            padding: 80px 30px; display: flex; flex-direction: column; gap: 20px;
-        }
-        .mobile-nav.active { right: 0; }
-        .mobile-nav a {
-            font-size: 1.2rem; font-weight: 600;
-            border-bottom: 1px solid var(--border-color); padding-bottom: 15px;
-            color: var(--text-main);
-        }
-        .close-menu {
-            position: absolute; top: 25px; right: 25px; font-size: 2rem;
-            cursor: pointer; color: var(--primary-color);
-        }
-        .overlay {
-            position: fixed; top:0; left:0; width:100%; height:100%;
-            background: rgba(0,0,0,0.5); z-index: 1000; display: none;
-            backdrop-filter: blur(2px);
-        }
-        .overlay.active { display: block; }
-
-        @media (max-width: 900px) {
-            .tech-grid { grid-template-columns: 1fr; }
-            .hero-content h1 { font-size: 2.8rem; }
-            .hero-content p { font-size: 1.1rem; }
+        .cert-item:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-5px);
         }
     </style>
 </head>
@@ -225,6 +216,7 @@
                 <a href="index.html" class="active">홈</a>
                 <a href="about.html">회사소개</a>
                 <a href="equipment.html">장비 및 기술</a>
+                <a href="trust.html">인증 및 신뢰</a>
                 <a href="contact.html">오시는 길 / 연락처</a>
             </nav>
             <div class="hamburger">
@@ -240,17 +232,17 @@
         <a href="index.html" class="active">홈</a>
         <a href="about.html">회사소개</a>
         <a href="equipment.html">장비 및 기술</a>
+        <a href="trust.html">인증 및 신뢰</a>
         <a href="contact.html">오시는 길 / 연락처</a>
     </div>
 
-    <!-- Hero Section -->
     <section class="hero fade-up">
         <div class="container hero-content">
             <h1>깨끗한 물을 만드는 기술,<br>비에이텍(주)</h1>
             <p>ISO 9001 품질경영 및 KC 위생안전 인증을 바탕으로,<br>최상의 펌프 기술력과 안정적인 수처리 솔루션을 제공합니다.</p>
             <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
                 <a href="contact.html" class="btn btn-primary">빠른 문의하기</a>
-                <a href="about.html" class="btn btn-outline" style="color: white; border-color: white;">회사 소개서 보기</a>
+                <a href="about.html" class="btn btn-outline">회사 소개서 보기</a>
             </div>
         </div>
     </section>
@@ -271,22 +263,30 @@
                 <h3>무맥동 정량펌프 (PKD)</h3>
                 <p>특수 등속도 캠을 채택하여 토출 맥동을 최소화했습니다. 120mL/min부터 최대 81,000mL/min까지 초정밀 제어가 가능합니다.</p>
             </div>
-            <div class="service-card" onclick="openPdfModal('pdf/submersible_pump.pdf')" style="cursor: pointer;" title="카탈로그 보기">
+            <div class="service-card">
                 <i class="fa-solid fa-water service-icon"></i>
                 <h3>수중 및 벌류트 펌프</h3>
                 <p>배수 및 오폐수 처리에 최적화된 설계와 견고한 내구성으로, 제작부터 전문 설치 시공, 철저한 유지보수까지 책임집니다.</p>
-                <div style="margin-top: 20px; font-weight: 600; color: var(--primary-light);">
-                    <i class="fa-regular fa-file-pdf"></i> PDF 카탈로그 보기
-                </div>
             </div>
         </div>
     </section>
 
-    <!-- Tech / Equipment Section -->
     <section class="tech-section fade-up">
         <div class="container tech-grid">
-            <div class="tech-image">
-                <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="펌프 제조 및 검수 시설">
+            <div class="tech-slider">
+                <div class="slider-track" id="sliderTrack">
+                    <div class="slide" data-label="공장 외부"><img src="공장 외부.png" alt="공장 외부"></div>
+                    <div class="slide" data-label="공장 내부"><img src="공장 내부.png" alt="공장 내부"></div>
+                    <div class="slide" data-label="성능 시험장"><img src="성능 시험장.png" alt="성능 시험장"></div>
+                    <div class="slide" data-label="자재관리소"><img src="자재관리소.png" alt="자재관리소"></div>
+                    <div class="slide" data-label="펌프 제작소"><img src="펌프 제작소.png" alt="펌프 제작소"></div>
+                    <div class="slide" data-label="펌프 출고대기소"><img src="펌프 출고대기소.png" alt="펌프 출고대기소"></div>
+                </div>
+                
+                <button class="slider-btn prev-btn" id="prevBtn" aria-label="이전 사진"><i class="fa-solid fa-chevron-left"></i></button>
+                <button class="slider-btn next-btn" id="nextBtn" aria-label="다음 사진"><i class="fa-solid fa-chevron-right"></i></button>
+                
+                <div class="slider-dots" id="sliderDots"></div>
             </div>
             <div class="tech-content">
                 <h3>완벽한 품질을 위한 자체 인프라</h3>
@@ -298,17 +298,16 @@
                     <li><i class="fa-solid fa-check-circle"></i> 긴급 출동 및 정기 유지관리(A/S) 통합 네트워크망</li>
                 </ul>
                 
-                <div style="margin-top: 30px;">
+                <div style="margin-top: 32px;">
                     <a href="equipment.html" class="btn btn-outline">장비 시설 자세히 보기</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Trust Section -->
     <section class="trust-section fade-up">
         <div class="container">
-            <div class="trust-grid">
+            <div class="trust-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px;">
                 <div class="trust-item">
                     <h2 class="counter" data-target="15">0</h2>
                     <p>년 이상의 펌프 제조 업력</p>
@@ -323,19 +322,39 @@
                 </div>
             </div>
             
-            <div class="cert-logos">
-                <div class="cert-item"><i class="fa-solid fa-award" style="color:var(--secondary-color);"></i> ISO 9001:2015</div>
-                <div class="cert-item"><i class="fa-solid fa-shield-halved" style="color:var(--secondary-color);"></i> KC 위생안전기준 인증</div>
-                <div class="cert-item"><i class="fa-solid fa-building-circle-check" style="color:var(--secondary-color);"></i> 경영혁신형 중소기업(Main-Biz)</div>
+            <div class="cert-logos" style="margin-top: 60px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                <div class="cert-item"><i class="fa-solid fa-award"></i> ISO 9001:2015</div>
+                <div class="cert-item"><i class="fa-solid fa-shield-halved"></i> KC 위생안전기준 인증</div>
+                <div class="cert-item"><i class="fa-solid fa-building-circle-check"></i> 경영혁신형 중소기업(Main-Biz)</div>
+            </div>
+
+            <div style="margin-top: 50px;">
+                <a href="trust.html" class="btn btn-outline-white">인증 및 신뢰 원본 확인 <i class="fa-solid fa-arrow-right"></i></a>
             </div>
         </div>
     </section>
 
-    <!-- PDF Modal -->
+    <!-- Floating PDF Viewer Modal -->
     <div id="pdfModal" class="pdf-modal">
-        <div class="pdf-modal-content">
-            <span class="pdf-close-btn">&times;</span>
-            <iframe id="pdfIframe" src="" width="100%" height="100%" title="PDF Viewer" style="border:none;"></iframe>
+        <div class="pdf-modal-container">
+            <div class="pdf-modal-header">
+                <h3 id="pdfTitle">유지관리 지침서</h3>
+                <div class="pdf-modal-actions">
+                    <a id="pdfDownloadBtn" href="" download class="pdf-action-btn" title="다운로드">
+                        <i class="fa-solid fa-download"></i>
+                    </a>
+                    <div class="pdf-close-btn" title="닫기">
+                        <i class="fa-solid fa-xmark"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="pdf-modal-body">
+                <div class="pdf-loader">
+                    <div class="spinner"></div>
+                    <p>문서를 불러오는 중입니다...</p>
+                </div>
+                <iframe id="pdfFrame" src="" frameborder="0"></iframe>
+            </div>
         </div>
     </div>
 
@@ -344,8 +363,8 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-col">
-                    <a href="index.html" class="logo" style="color: white; margin-bottom: 20px;">
-                        <i class="fa-solid fa-water"></i> 비에이텍(주)
+                    <a href="index.html" class="logo">
+                        <i class="fa-solid fa-water"></i> 비에이텍
                     </a>
                     <p>깨끗한 물을 만드는 기술력,<br>신뢰할 수 있는 펌프 전문 제조 기업입니다.</p>
                 </div>
@@ -354,21 +373,88 @@
                     <p><i class="fa-solid fa-location-dot"></i> 강원특별자치도 춘천시 퇴계공단2길 64</p>
                     <p><i class="fa-solid fa-phone"></i> 033-264-9243</p>
                     <p><i class="fa-solid fa-fax"></i> 033-251-5747</p>
-                    <p><i class="fa-solid fa-envelope"></i> info@batech.co.kr</p>
+                    <p><i class="fa-solid fa-envelope"></i> gwf0123@hanmail.net</p>
                 </div>
                 <div class="footer-col">
                     <h3>Quick Links</h3>
                     <p><a href="about.html">회사소개</a></p>
-                    <p><a href="equipment.html">장비 및 기술</a></p>
+                    <p><a href="trust.html">인증 및 신뢰</a></p>
                     <p><a href="contact.html">오시는 길 / 연락처</a></p>
                 </div>
             </div>
             <div class="footer-bottom">
-                &copy; 2026 비에이텍(주). All rights reserved.
+                &copy; 2026 (주) 비에이텍. All rights reserved.
             </div>
         </div>
     </footer>
 
+    <!-- Mobile Menu Overlay -->
+    <div class="overlay"></div>
+    <div class="mobile-nav">
+        <i class="fa-solid fa-xmark close-menu"></i>
+        <a href="index.html" class="active">홈</a>
+        <a href="about.html">회사소개</a>
+        <a href="equipment.html">장비 및 기술</a>
+        <a href="trust.html">인증 및 신뢰</a>
+        <a href="contact.html">오시는 길 / 연락처</a>
+    </div>
+
     <script src="js/script.js"></script>
+    <script src="js/equipment.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const track = document.getElementById('sliderTrack');
+            const slides = Array.from(track.children);
+            const nextBtn = document.getElementById('nextBtn');
+            const prevBtn = document.getElementById('prevBtn');
+            const dotsContainer = document.getElementById('sliderDots');
+            
+            let currentIndex = 0;
+            
+            // Create dots
+            slides.forEach((_, index) => {
+                const dot = document.createElement('div');
+                dot.classList.add('dot');
+                if (index === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => goToSlide(index));
+                dotsContainer.appendChild(dot);
+            });
+            
+            const dots = Array.from(dotsContainer.children);
+            
+            function updateSlider() {
+                track.style.transform = `translateX(-${currentIndex * 100}%)`;
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentIndex);
+                });
+            }
+            
+            function goToSlide(index) {
+                currentIndex = index;
+                updateSlider();
+            }
+            
+            nextBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % slides.length;
+                updateSlider();
+            });
+            
+            prevBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+                updateSlider();
+            });
+
+            // Touch support for mobile
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            track.addEventListener('touchstart', e => touchStartX = e.changedTouches[0].screenX);
+            track.addEventListener('touchend', e => {
+                touchEndX = e.changedTouches[0].screenX;
+                if (touchStartX - touchEndX > 50) nextBtn.click();
+                if (touchEndX - touchStartX > 50) prevBtn.click();
+            });
+        });
+    </script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>장비 및 기술 | (주) 비에이텍</title>
+    <title>인증 및 신뢰 | (주) 비에이텍</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/style.css">
@@ -13,18 +13,17 @@
             background-color: var(--bg-divider);
             text-align: center;
         }
-        .equipment-card i {
-            font-size: 3rem;
+        .cert-info {
+            font-size: 0.9rem;
             color: var(--primary-color);
-            margin-bottom: 24px;
+            margin: 16px 0;
+            padding: 12px;
+            background: rgba(14, 165, 233, 0.05);
+            border-radius: 12px;
+            font-weight: 500;
         }
-        .equipment-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 16px;
-        }
-        .equipment-card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
+        .cert-desc {
+            color: var(--text-body);
             line-height: 1.6;
         }
     </style>
@@ -40,8 +39,8 @@
             <nav class="nav-links">
                 <a href="index.html">홈</a>
                 <a href="about.html">회사소개</a>
-                <a href="equipment.html" class="active">장비 및 기술</a>
-                <a href="trust.html">인증 및 신뢰</a>
+                <a href="equipment.html">장비 및 기술</a>
+                <a href="trust.html" class="active">인증 및 신뢰</a>
                 <a href="contact.html">오시는 길 / 연락처</a>
             </nav>
             <div class="hamburger"><i class="fa-solid fa-bars"></i></div>
@@ -50,60 +49,60 @@
 
     <div class="page-header">
         <div class="container">
-            <h1 class="section-title">Industrial Equipment</h1>
-            <p class="section-subtitle">(주)비에이텍의 혁신적인 펌프 솔루션과 유지관리지침서를 확인하세요. 각 장비를 클릭하면 상세 지침서를 즉시 확인할 수 있습니다.</p>
+            <h1 class="section-title">Trust & Certificates</h1>
+            <p class="section-subtitle">(주)비에이텍은 엄격한 품질 관리와 공인된 인증을 통해 수처리 산업의 표준을 제시합니다.</p>
         </div>
     </div>
 
     <!-- Main Content -->
     <main class="container" style="padding: 100px 0;">
-        <div class="equipment-grid">
-            <!-- 부스터 펌프 -->
-            <div class="equipment-card" data-pdf="부스터펌프 유지관리지침서.pdf">
-                <i class="fa-solid fa-bolt-lightning"></i>
-                <h3>부스터 펌프</h3>
-                <p>일정한 압력 유지가 필요한 급수 시스템의 핵심 솔루션입니다. 정밀한 제어와 에너지 효율을 자랑합니다.</p>
-                <div style="margin-top: 24px; color: var(--primary-color); font-weight: 600;">지침서 보기 <i class="fa-solid fa-arrow-right"></i></div>
+        <div class="certificate-grid">
+            <!-- ISO 9001 -->
+            <div class="cert-card equipment-card" data-pdf="ISO9001인증서.pdf">
+                <i class="fa-solid fa-award"></i>
+                <h3>ISO 9001:2015</h3>
+                <div class="cert-info">
+                    인증번호: QI291124<br>
+                    유효기간: ~ 2027.08.22
+                </div>
+                <p class="cert-desc">국제 표준 규격에 맞춘 엄격한 품질 관리 시스템을 통해 고객 만족을 실현합니다.</p>
+                <div style="margin-top: 24px; color: var(--primary-color); font-weight: 600;">원본 확인 <i class="fa-solid fa-magnifying-glass"></i></div>
             </div>
 
-            <!-- 수중 펌프 -->
-            <div class="equipment-card" data-pdf="수중펌프 유지관리지침서.pdf">
-                <i class="fa-solid fa-droplet"></i>
-                <h3>수중 펌프</h3>
-                <p>배수 및 오수 처리에 최적화된 강력한 내구성을 갖춘 펌프입니다. 극한의 환경에서도 완벽한 성능을 발휘합니다.</p>
-                <div style="margin-top: 24px; color: var(--primary-color); font-weight: 600;">지침서 보기 <i class="fa-solid fa-arrow-right"></i></div>
+            <!-- KC 인증 -->
+            <div class="cert-card equipment-card" data-pdf="KC인증서.pdf">
+                <i class="fa-solid fa-certificate"></i>
+                <h3>KC 위생안전기준 인증</h3>
+                <div class="cert-info">
+                    인증번호: KCW-2025-0163<br>
+                    유효기간: ~ 2027.09.18 (갱신완료)
+                </div>
+                <p class="cert-desc">깨끗한 수돗물 공급을 위해 한국물기술인증원의 엄격한 위생 기준을 통과했습니다.</p>
+                <div style="margin-top: 24px; color: var(--primary-color); font-weight: 600;">원본 확인 <i class="fa-solid fa-magnifying-glass"></i></div>
             </div>
 
-            <!-- 슬러지 펌프 -->
-            <div class="equipment-card" data-pdf="슬러지펌프 유지관리지침서.pdf">
-                <i class="fa-solid fa-gears"></i>
-                <h3>슬러지 펌프</h3>
-                <p>고농도 슬러지 이송에 특화된 견고한 설계가 특징입니다. 막힘 없는 연속 운전을 보장합니다.</p>
-                <div style="margin-top: 24px; color: var(--primary-color); font-weight: 600;">지침서 보기 <i class="fa-solid fa-arrow-right"></i></div>
+            <!-- Main-Biz -->
+            <div class="cert-card equipment-card" data-pdf="메인비즈 확인서(기한27.09.13.).pdf">
+                <i class="fa-solid fa-lightbulb"></i>
+                <h3>Main-Biz 인증</h3>
+                <div class="cert-info">
+                    확인번호: 제 R180801-01794 호<br>
+                    유효기간: ~ 2027.09.13
+                </div>
+                <p class="cert-desc">지속적인 경영 혁신과 기술 고도화를 통해 성장 잠재력을 인정받은 혁신 기업입니다.</p>
+                <div style="margin-top: 24px; color: var(--primary-color); font-weight: 600;">원본 확인 <i class="fa-solid fa-magnifying-glass"></i></div>
             </div>
 
-            <!-- 일축나사식 모노펌프 -->
-            <div class="equipment-card" data-pdf="일축나사식 모노펌프 유지관리지침서.pdf">
-                <i class="fa-solid fa-shuttle-space"></i>
-                <h3>일축나사식 모노펌프</h3>
-                <p>정량 이송과 고점도 액체 처리에 탁월한 성능을 보입니다. 부드러운 유동과 정밀한 토출이 가능합니다.</p>
-                <div style="margin-top: 24px; color: var(--primary-color); font-weight: 600;">지침서 보기 <i class="fa-solid fa-arrow-right"></i></div>
-            </div>
-
-            <!-- 정량 펌프 -->
-            <div class="equipment-card" data-pdf="정량펌프 유지관리지침서.pdf">
-                <i class="fa-solid fa-flask-vial"></i>
-                <h3>정량 펌프</h3>
-                <p>화학 약품 정밀 주입을 위한 고정밀 제어 시스템을 탑재하였습니다. 정확한 유량 조절이 핵심입니다.</p>
-                <div style="margin-top: 24px; color: var(--primary-color); font-weight: 600;">지침서 보기 <i class="fa-solid fa-arrow-right"></i></div>
-            </div>
-
-            <!-- 편흡입 볼류트 펌프 -->
-            <div class="equipment-card" data-pdf="편흡입볼류트펌프 유지관리지침서.pdf">
-                <i class="fa-solid fa-fan"></i>
-                <h3>편흡입 볼류트 펌프</h3>
-                <p>범용 산업 현장에서 가장 널리 사용되는 신뢰성 높은 펌프입니다. 간편한 유지보수와 안정적인 운전이 강점입니다.</p>
-                <div style="margin-top: 24px; color: var(--primary-color); font-weight: 600;">지침서 보기 <i class="fa-solid fa-arrow-right"></i></div>
+            <!-- 지명원 -->
+            <div class="cert-card equipment-card" data-pdf="지명원 (1).pdf">
+                <i class="fa-solid fa-file-pdf"></i>
+                <h3>기업 지명원</h3>
+                <div class="cert-info">
+                    비에이텍(주)<br>
+                    2026 최신판 업데이트
+                </div>
+                <p class="cert-desc">비에이텍의 연혁, 주요 실적 및 보유 기술력을 한눈에 확인할 수 있는 공식 문서입니다.</p>
+                <div style="margin-top: 24px; color: var(--primary-color); font-weight: 600;">원본 확인 <i class="fa-solid fa-magnifying-glass"></i></div>
             </div>
         </div>
     </main>
