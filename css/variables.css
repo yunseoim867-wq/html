@@ -1,23 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap');
 
 :root {
-    /* Color Palette - Blue & White Theme */
-    --primary-color: #0056b3; /* 신뢰감을 주는 블루 */
-    --primary-light: #3385ff;
-    --primary-dark: #003d82;
-    
-    --secondary-color: #00aaff; /* 밝고 깨끗한 물을 상징하는 밝은 블루 */
-    --point-color: #e6f0fa; /* 아주 연한 블루 배경 (화이트 앤 블루 조화) */
-
+    /* Color Palette - Clean & Trust Theme */
     --bg-white: #ffffff;
-    --bg-light: #f5f8fc; /* 연한 그레이-블루 배경 */
-    --bg-dark: #1e293b;
-
-    --text-main: #1f2937;
+    --bg-divider: #f8fafc;
+    
+    --primary-color: #0ea5e9; /* Sky Blue */
+    --secondary-color: #1e3a8a; /* Deep Blue */
+    --accent-color: #2dd4bf; /* Mint */
+    
+    --text-heading: #1e3a8a;
+    --text-body: #334155;
     --text-muted: #64748b;
     --text-light: #ffffff;
     
-    --border-color: #e2e8f0;
+    --border-color: rgba(30, 58, 138, 0.1);
+    --border-radius: 16px;
     
     /* Typography */
     --font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
@@ -27,9 +25,11 @@
     --max-width: 1200px;
     
     /* Shadows & Transitions */
-    --shadow-sm: 0 2px 8px rgba(0, 86, 179, 0.06);
-    --shadow-md: 0 4px 12px rgba(0, 86, 179, 0.1);
-    --shadow-lg: 0 10px 25px rgba(0, 86, 179, 0.15);
-    --transition-fast: 0.2s ease-in-out;
-    --transition-normal: 0.3s ease-in-out;
+    --shadow-sm: 0 4px 12px rgba(30, 58, 138, 0.05);
+    --shadow-md: 0 8px 20px rgba(30, 58, 138, 0.08);
+    --shadow-lg: 0 15px 35px rgba(30, 58, 138, 0.12);
+    --shadow-floating: 0 10px 30px rgba(30, 58, 138, 0.08);
+    
+    --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
