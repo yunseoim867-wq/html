@@ -95,6 +95,47 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* Custom Play Button Overlay */
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.4);
+            cursor: pointer;
+            z-index: 2;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .video-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .play-btn-circle {
+            width: 90px;
+            height: 90px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.2rem;
+            box-shadow: 0 10px 30px rgba(14, 165, 233, 0.4);
+            transition: transform 0.3s ease, background 0.3s ease;
+            padding-left: 6px; /* Visual centering for play icon */
+        }
+
+        .video-overlay:hover .play-btn-circle {
+            transform: scale(1.1);
+            background: var(--secondary-color);
+        }
     </style>
 </head>
 
@@ -137,10 +178,15 @@
             </div>
             <div class="overview-image">
                 <div class="overview-video">
-                    <video playsinline muted autoplay loop preload="auto" poster="./images/video-poster.png">
+                    <video id="introVideo" playsinline preload="auto">
                         <source src="./beatech.mp4" type="video/mp4">
                         브라우저가 동영상을 지원하지 않습니다.
                     </video>
+                    <div class="video-overlay" id="videoOverlay">
+                        <div class="play-btn-circle">
+                            <i class="fa-solid fa-play"></i>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -373,6 +419,18 @@
     <script src="./js/script.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // Video Control Logic
+            const video = document.getElementById('introVideo');
+            const overlay = document.getElementById('videoOverlay');
+
+            if (video && overlay) {
+                overlay.addEventListener('click', () => {
+                    video.play();
+                    video.controls = true; // Show native controls once started
+                    overlay.classList.add('hidden');
+                });
+            }
+
             // PDF Modal Logic (Localized for about.html)
             const modal = document.getElementById('pdfModal');
             const modalFrame = document.getElementById('pdfFrame');

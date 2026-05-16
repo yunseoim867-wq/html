@@ -271,6 +271,33 @@
         </div>
     </section>
 
+    <!-- Cardnews Slider Section (New) -->
+    <section class="cardnews-section fade-up">
+        <div class="container">
+            <h2 class="section-title">한눈에 보는 비에이텍 기술력</h2>
+            <p class="section-subtitle">무맥동 기술부터 정밀 시공까지, 비에이텍만의 핵심 솔루션을 소개합니다.</p>
+            
+            <div class="cardnews-container">
+                <div class="cardnews-slider">
+                    <div class="cardnews-track" id="cardnewsTrack">
+                        <div class="cardnews-slide"><img src="./card1.png" alt="기술력 1"></div>
+                        <div class="cardnews-slide"><img src="./card2.png" alt="기술력 2"></div>
+                        <div class="cardnews-slide"><img src="./card3.png" alt="기술력 3"></div>
+                        <div class="cardnews-slide"><img src="./card4.png" alt="기술력 4"></div>
+                        <div class="cardnews-slide"><img src="./card5.png" alt="기술력 5"></div>
+                        <div class="cardnews-slide"><img src="./card6.png" alt="기술력 6"></div>
+                        <div class="cardnews-slide"><img src="./card7.png" alt="기술력 7"></div>
+                    </div>
+                    
+                    <button class="cardnews-btn cardnews-prev" id="cardnewsPrevBtn" aria-label="이전 카드"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button class="cardnews-btn cardnews-next" id="cardnewsNextBtn" aria-label="다음 카드"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+                
+                <div class="cardnews-dots" id="cardnewsDots"></div>
+            </div>
+        </div>
+    </section>
+
     <section class="tech-section fade-up">
         <div class="container tech-grid">
             <div class="tech-slider">
@@ -399,7 +426,7 @@
     <script src="./js/script.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // 1. Slider Logic
+            // 1. Existing Slider Logic (Factory Photos)
             const track = document.getElementById('sliderTrack');
             const slides = Array.from(track.children);
             const nextBtn = document.getElementById('nextBtn');
@@ -442,7 +469,48 @@
                 updateSlider();
             });
 
-            // 2. PDF Modal Logic (Internalized)
+            // 2. New Cardnews Slider Logic
+            const cnTrack = document.getElementById('cardnewsTrack');
+            const cnSlides = Array.from(cnTrack.children);
+            const cnNextBtn = document.getElementById('cardnewsNextBtn');
+            const cnPrevBtn = document.getElementById('cardnewsPrevBtn');
+            const cnDotsContainer = document.getElementById('cardnewsDots');
+            
+            let cnIndex = 0;
+            
+            if (cnSlides.length > 0 && cnDotsContainer) {
+                cnSlides.forEach((_, index) => {
+                    const dot = document.createElement('div');
+                    dot.classList.add('cardnews-dot');
+                    if (index === 0) dot.classList.add('active');
+                    dot.addEventListener('click', () => {
+                        cnIndex = index;
+                        updateCnSlider();
+                    });
+                    cnDotsContainer.appendChild(dot);
+                });
+            }
+            
+            const cnDots = Array.from(cnDotsContainer.children);
+            
+            function updateCnSlider() {
+                cnTrack.style.transform = `translateX(-${cnIndex * 100}%)`;
+                cnDots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === cnIndex);
+                });
+            }
+            
+            cnNextBtn.addEventListener('click', () => {
+                cnIndex = (cnIndex + 1) % cnSlides.length;
+                updateCnSlider();
+            });
+            
+            cnPrevBtn.addEventListener('click', () => {
+                cnIndex = (cnIndex - 1 + cnSlides.length) % cnSlides.length;
+                updateCnSlider();
+            });
+
+            // 3. PDF Modal Logic (Internalized)
             const modal = document.getElementById('pdfModal');
             const modalFrame = document.getElementById('pdfFrame');
             const modalTitle = document.getElementById('pdfTitle');
@@ -470,7 +538,6 @@
                 }, 300);
             };
 
-            // Global Click Listener for elements with data-file or data-pdf
             document.addEventListener('click', (e) => {
                 const target = e.target.closest('[data-file], [data-pdf]');
                 if (target) {
@@ -484,9 +551,7 @@
 
             if (closeBtn) closeBtn.addEventListener('click', closeModal);
             if (modal) {
-                modal.addEventListener('click', (e) => {
-                    if (e.target === modal) closeModal();
-                });
+                modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
             }
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape' && modal && modal.classList.contains('show')) closeModal();
